@@ -27,7 +27,6 @@ function MyProfile() {
       dispatch(login(user));
       setOldUser(user);
       succesBtn.current.click()
-      console.log("hii")
     }
   }
 

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { getUser, userDelete, usersEdit, usersAdd } from '../config/Api'
+import React, { useEffect, useRef, useState } from 'react'
+import { getUser, userDelete, usersEdit, usersAdd , getRoles} from '../config/Api'
 import { MainHeading, User, Modal } from '../components';
 import Warning from '../assets/warning.png'
 
@@ -9,11 +9,16 @@ function Users() {
   const [editUser, setEditUser] = useState({ username: "", email: "" });
   const [deleteUser, setDeleteUser] = useState({});
   const [addUser, setAddUser] = useState({ userId: "", username: "", email: "", status: true, role: "Admin" });
+  const [roles, setRoles] = useState([]);
+
+  const succesBtn = useRef(null);
 
   useEffect(() => {
     const fetchUsers = () => {
       const fetchedUsers = getUser();
+      const fetchedRoles = getRoles();
       setUsers(fetchedUsers);
+      setRoles(fetchedRoles)
     }
     fetchUsers();
   }, []);
@@ -43,10 +48,12 @@ function Users() {
     setUsers(data);
   }
 
-  const handleAddUser = async () => {
+  const handleAddUser = async (e) => {
+    e.preventDefault()
     const data2 = await usersAdd(addUser);
     setAddUser({ userId: "", username: "", email: "", status: true, role: "Admin" })
     setUsers(data2);
+    succesBtn.current.click()
   }
 
   return (
@@ -58,7 +65,7 @@ function Users() {
       <div className="inner-wrapper h-100">
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h2 className='mb-0'>All Users <span>{users.length}</span></h2>
-            <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usermodal">Add user</button>
+          <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usermodal"><i  className="fa-solid fa-plus me-2"></i>Add user</button>
         </div>
         <div className='overflow-auto d-flex flex-column table-container shadow'>
           <table className='w-100'>
@@ -74,23 +81,25 @@ function Users() {
             </thead>
             <tbody>
               {users.map((user) => (<tr key={user.userId}>
-                      <td>{user.userId}</td>
-                      <td>{user.username}</td>
-                      <td>{user.email}</td>
-                      <td>{user.status ? <><i className="fa-classic fa-regular fa-circle-dot fa-fw active me-1"></i><span className='active'>Active</span></> : <><i className="fa-classic fa-regular fa-circle-dot fa-fw inactive me-1"></i><span className='inactive'>Inactive</span></>}</td>
-                      <td>{user.role}</td>
-                      <td>
-                        <span className='c-p me-3 text-info' title='Edit' onClick={() => { editModel(user.userId) }} data-bs-toggle="modal" data-bs-target="#editmodal"><i className="fa-solid fa-pen-to-square"></i></span>
-                        <span className='c-p text-warning' title='Delete' onClick={() => { deleteModel(user.userId) }} data-bs-toggle="modal" data-bs-target="#deletemodal"><i className="fa-regular fa-trash-can"></i></span>
-                      </td>
-                    </tr>))}
+                <td>{user.userId}</td>
+                <td>{user.username}</td>
+                <td>{user.email}</td>
+                <td>{user.status ? <><i className="fa-classic fa-regular fa-circle-dot fa-fw active me-1"></i><span className='active'>Active</span></> : <><i className="fa-classic fa-regular fa-circle-dot fa-fw inactive me-1"></i><span className='inactive'>Inactive</span></>}</td>
+                <td>{user.role}</td>
+                <td>
+                  <span className='c-p me-3 text-info' title='Edit' onClick={() => { editModel(user.userId) }} data-bs-toggle="modal" data-bs-target="#editmodal"><i className="fa-solid fa-pen-to-square"></i></span>
+                  <span className='c-p text-warning' title='Delete' onClick={() => { deleteModel(user.userId) }} data-bs-toggle="modal" data-bs-target="#deletemodal"><i className="fa-regular fa-trash-can"></i></span>
+                </td>
+              </tr>))}
             </tbody>
           </table>
 
           {/* Edit Modal */}
           <Modal id="editmodal">
-            <form>
+            <form className='p-4'>
+              <h4 className='mb-4'>Edit User</h4>
               <input
+                className='w-100 mb-3'
                 type="text"
                 id="name"
                 placeholder="User Name"
@@ -100,50 +109,51 @@ function Users() {
               <br />
 
               <input
-                type="text"
+                className='w-100 mb-3'
+                type="email"
                 id="email"
                 placeholder="Email Address"
                 value={editUser.email}
                 onChange={(e) => setEditUser((prevState) => ({ ...prevState, email: e.target.value }))}
               />
               <br />
+              <div className='mb-3 d-flex'>
+                <span className='me-3'>Status:</span>
+                <input
+                  type="radio"
+                  id="active"
+                  name="status"
+                  value={true}
+                  checked={editUser.status === true}
+                  onChange={() => setEditUser((prevState) => ({ ...prevState, status: true }))}
+                />
+                <label htmlFor="active" className='me-3'>Active</label>
 
-              <legend>Status:</legend>
-              <input
-                type="radio"
-                id="active"
-                name="status"
-                value={true}
-                checked={editUser.status === true}
-                onChange={() => setEditUser((prevState) => ({ ...prevState, status: true }))}
-              />
-              <label htmlFor="active">Active</label>
+                <input
+                  type="radio"
+                  id="inactive"
+                  name="status"
+                  value={false}
+                  checked={editUser.status === false}
+                  onChange={() => setEditUser((prevState) => ({ ...prevState, status: false }))}
+                />
+                <label htmlFor="inactive">Inactive</label>
+              </div>
 
-              <input
-                type="radio"
-                id="inactive"
-                name="status"
-                value={false}
-                checked={editUser.status === false}
-                onChange={() => setEditUser((prevState) => ({ ...prevState, status: false }))}
-              />
-              <label htmlFor="inactive">Inactive</label>
-
-              <br />
-
-              <label htmlFor="roles">Role:</label>
-              <select
-                id="roles"
-                name="role"
-                value={editUser.role}
-                onChange={(e) => setEditUser((prevState) => ({ ...prevState, role: e.target.value }))}
-              >
-                <option value="Admin">Admin</option>
-                <option value="Editor">Editor</option>
-                <option value="Viewer">Viewer</option>
-              </select>
-
-              <div className="modal-footer">
+              <div className="mb-3">
+                <label htmlFor="roles" className='me-3'>Role:</label>
+                <select
+                  id="roles"
+                  name="role"
+                  value={editUser.role}
+                  onChange={(e) => setEditUser((prevState) => ({ ...prevState, role: e.target.value }))}
+                >
+                  <option value="Admin">Admin</option>
+                  <option value="Editor">Editor</option>
+                  <option value="Viewer">Viewer</option>
+                </select>
+              </div>
+              <div className="modal-footer pb-0">
                 <button
                   type="button"
                   className="btn btn-secondary"
@@ -158,7 +168,7 @@ function Users() {
                   data-bs-dismiss="modal"
                   onClick={handleEditUser}
                 >
-                  Edit User
+                  Save Changes
                 </button>
               </div>
             </form>
@@ -181,27 +191,32 @@ function Users() {
 
           {/* Add User Modal */}
           <Modal id="usermodal">
-            <div className="modal-body">
-              <form>
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="User Name"
-                  value={addUser.username}
-                  onChange={(e) => setAddUser((prevState) => ({ ...prevState, username: e.target.value }))}
-                />
-                <br />
+            <form className='p-4' onSubmit={(e) => handleAddUser(e)}>
+              <h4 className='mb-4'>Add User</h4>
+              <input
+                required
+                className='w-100 mb-3'
+                type="text"
+                id="name"
+                placeholder="User Name"
+                value={addUser.username}
+                onChange={(e) => setAddUser((prevState) => ({ ...prevState, username: e.target.value }))}
+              />
+              <br />
 
-                <input
-                  type="text"
-                  id="email"
-                  placeholder="Email Address"
-                  value={addUser.email}
-                  onChange={(e) => setAddUser((prevState) => ({ ...prevState, email: e.target.value }))}
-                />
-                <br />
+              <input
+                required
+                className='w-100 mb-3'
+                type="email"
+                id="email"
+                placeholder="Email Address"
+                value={addUser.email}
+                onChange={(e) => setAddUser((prevState) => ({ ...prevState, email: e.target.value }))}
+              />
+              <br />
 
-                <legend>Status:</legend>
+              <div className='mb-3 d-flex'>
+                <span className='me-3'>Status:</span>
                 <input
                   type="radio"
                   id="active"
@@ -210,7 +225,7 @@ function Users() {
                   checked={addUser.status === true}
                   onChange={() => setAddUser((prevState) => ({ ...prevState, status: true }))}
                 />
-                <label htmlFor="active">Active</label>
+                <label htmlFor="active" className='me-3'>Active</label>
 
                 <input
                   type="radio"
@@ -220,42 +235,43 @@ function Users() {
                   checked={addUser.status === false}
                   onChange={() => setAddUser((prevState) => ({ ...prevState, status: false }))}
                 />
-                <label htmlFor="inactive">Inactive</label>
+                <label htmlFor="inactive" className='me-3'>Inactive</label>
+              </div>
 
-                <br />
+              <label htmlFor="roles" className='me-3 mb-3'>Role:</label>
+              <select
+                id="roles"
+                name="role"
+                value={addUser.role}
+                onChange={(e) => setAddUser((prevState) => ({ ...prevState, role: e.target.value }))}
+              >
+                {roles.map((role)=><option value={role.name} key={role.roleId}>{role.name}</option>)}
+              </select>
 
-                <label htmlFor="roles">Role:</label>
-                <select
-                  id="roles"
-                  name="role"
-                  value={addUser.role}
-                  onChange={(e) => setAddUser((prevState) => ({ ...prevState, role: e.target.value }))}
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                  onClick={() => setAddUser({ username: "", email: "", status: true, role: "Admin" })}
                 >
-                  <option value="Admin">Admin</option>
-                  <option value="Editor">Editor</option>
-                  <option value="Viewer">Viewer</option>
-                </select>
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                >
+                  Add User
+                </button>
+              </div>
+            </form>
+          </Modal>
 
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                    onClick={() => setAddUser({ username: "", email: "", status: true, role: "Admin" })}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    data-bs-dismiss="modal"
-                    onClick={handleAddUser}
-                  >
-                    Add User
-                  </button>
-                </div>
-              </form>
-            </div>
+          <button className='success' ref={succesBtn} hidden data-bs-toggle="modal" data-bs-target="#successModal"></button>
+          <Modal id="successModal">
+            <span className='text-center py-3 fw-bold bg-success text-white'>
+              New User Added successfully!
+            </span>
           </Modal>
         </div>
       </div>

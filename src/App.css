@@ -24,6 +24,10 @@
 .inner-wrapper {
     border-radius: 30px;
 }
+select {
+    padding: 3px 10px;
+    border-radius: 10px;
+}
 @media (max-width: 1100px) {
     .main-wrapper {
         padding: 10px;

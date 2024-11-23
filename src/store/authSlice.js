@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     status: true,
-    userData: {name: "jagdeep mahala", email: "jagdeep.send@gmail.com", phone: '99999999', username: "Jacky"}
+    userData: {name: "jagdeep mahala", email: "jagdeep.mahala27@gmail.com", phone: '99999999', username: "Jacky"}
 }
 
 const authSlice = createSlice({

@@ -1,5 +1,5 @@
 import React from 'react'
-import LogoImg from '../../public/fav-icon.png'
+import LogoImg from '../assets/fav-icon.png'
 import './Logo.css'
 
 function Logo() {

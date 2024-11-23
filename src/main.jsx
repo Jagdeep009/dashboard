@@ -4,8 +4,8 @@ import store from './store/store.js'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
-import {AuthLayout, Login} from './components'
-import {Users, Dashboard, MyProfile, RoleManagement} from './pages'
+import {AuthLayout} from './components'
+import {Users, MyProfile, RoleManagement, LoginPage} from './pages'
 
 const router = createBrowserRouter([
   {
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: (
       <AuthLayout authentication={false}>
-          <Login />
+          <LoginPage />
       </AuthLayout>
     ),
   }

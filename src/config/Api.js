@@ -26,7 +26,11 @@ const getUser = () => {
 }
 
 const userDelete = (id) => {
-  return users.filter((user)=>user.userId !== id);
+  const index = users.findIndex((user) => user.userId === id);
+  if (index !== -1) {
+    users.splice(index, 1);
+  }
+  return users;
 }
 
 const usersEdit = (editUser) => {
@@ -63,7 +67,11 @@ const getRoles = () => {
 }
 
 const rolesDelete = (id) => {
-return roles.filter((role)=>role.roleId !== id);
+  const index = roles.findIndex((role) => role.roleId === id);
+  if (index !== -1) {
+    roles.splice(index, 1);
+  }
+  return roles;
 }
 
 const rolesEdit = (editrole) => {
