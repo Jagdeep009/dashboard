@@ -1,0 +1,9 @@
+.MainHeading span {
+    font-size: 13px;
+    color: #666;
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+}
+.MainHeading h1 {
+    font-size: 25px;
+}

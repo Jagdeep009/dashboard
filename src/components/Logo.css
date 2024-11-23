@@ -1,0 +1,14 @@
+.Logo {
+    font-size: 20px;
+    font-weight: 650;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    align-items: center;
+    color: #1d1d1d;
+}
+.Logo img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}

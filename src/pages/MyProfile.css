@@ -1,0 +1,32 @@
+.banner {
+    background-color: #dfdcdc;
+    height: 150px;
+}
+.profile {
+    height: 150px;
+    width: 150px;
+    border: 5px solid #fff;
+    background-color: #dfdcdc;
+    border-radius: 100%;
+    transform: translate(0%, -50%);
+}
+.inner-wrap {
+    padding: 0 50px 30px 50px;
+}
+.main-wrapper2 h1 {
+    margin-top: 100px;
+    text-transform: capitalize;
+}
+.main-wrapper2 a {
+    font-weight: 500 !important;
+}
+.main-wrapper2 i {
+    color: #777 !important;
+}
+.main-wrapper2 input {
+    border: 1px solid #999;
+    outline: 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-transform: capitalize;
+}
