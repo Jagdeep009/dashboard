@@ -1,8 +1,9 @@
 .App {
     padding: 10px;
     background-color: #f2f2f23d;
-    max-height: 785px;
+    height: 100vh;
     width: 1550px;
+
 }
 .main-wrapper {
     padding: 30px;

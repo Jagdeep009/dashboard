@@ -1,8 +1,28 @@
-# React + Vite
+# Admin Dashboard - React.js Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is an admin dashboard application built using React.js, React Router DOM, and Redux for state management. The application is designed to manage user authentication, user roles, and user profiles. It includes protected routes, dummy API calls for CRUD operations, and role-based access control for different routes.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Authentication:** 
+  - Uses Redux for managing user authentication state.
+  - Protected routes based on authentication (users must be logged in to access certain pages).
+  
+- **Routes:**
+  - **User:** Manage user data (CRUD operations).
+  - **Role Management:** Manage user roles and permissions.
+  - **User Profile:** View and edit the current logged-in user's profile.
+
+- **API Calls:**
+  - Dummy API calls are used to perform CRUD operations on user data, roles, and profile management.
+
+- **Protected Routes:**
+  - All routes are protected using an `AuthLayout` to ensure that only authenticated users can access certain routes.
+
+## Tech Stack
+
+- **Frontend:** React.js, React Router DOM, Redux, Axios (for API calls)
+- **State Management:** Redux
+- **Styling:** Bootstrap (or any preferred CSS framework)
+- **Routing:** React Router DOM
+- **API:** Dummy API (simulating CRUD operations)

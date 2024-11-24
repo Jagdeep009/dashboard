@@ -1,10 +1,9 @@
 import React from 'react'
 import { Login } from '../components'
-import './LoginPage.css'
 
 function LoginPage() {
   return (
-    <div className='LoginPage'>
+    <div className='LoginPage h-100 w-100 d-flex justify-content-center align-items-center'>
       <Login />
     </div>
   )
