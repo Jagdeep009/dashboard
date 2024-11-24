@@ -26,6 +26,9 @@
     width: 20px;
     margin-right: 10px;
 }
+.SideMenu .menu-btn {
+    font-size: 20px;
+}
 
 /* responsive */
 @media (max-width: 1100px) {
