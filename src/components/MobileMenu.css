@@ -1,0 +1,33 @@
+.MobileMenu {
+    position: fixed;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  background: #FFF;
+  padding: 30px;
+  border-left: 2px solid #eee;
+  z-index: 99999;
+  transform: translateX(100%);
+  transition: all 0.2s ease-in-out;
+}
+.menu-bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: #403f3f96;
+    left: 0;
+    top: 0;
+    display: none;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+body.menu-open {
+    overflow: hidden;
+}
+.menu-open .MobileMenu {
+    transform: translateX(0%);
+}
+.menu-open .menu-bg {
+    display: block;
+    opacity: 1;
+}

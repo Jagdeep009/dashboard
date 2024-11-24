@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./SideMenu.css"
-import {Logo} from './'
-import { NavLink } from 'react-router-dom'
+import {Logo, MobileMenu} from './'
+import { NavLink, useLocation  } from 'react-router-dom'
 import Dashboard from '../assets/dashboard.png'
 import Users from '../assets/users.png'
 import Roles from '../assets/roles.png'
@@ -12,6 +12,28 @@ import {logout} from '../store/authSlice'
 
 function SideMenu() {
   const dispatch = useDispatch();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  function toggleMenu() {
+    setIsMenuOpen(prevState => !prevState);
+  }
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+
+    return () => {
+      document.body.classList.remove('menu-open');
+    };
+  }, [isMenuOpen]);
 
   function logoutUser() {
     dispatch(logout());
@@ -30,10 +52,11 @@ function SideMenu() {
             <img src={Logout} /> <span>Logout</span>
           </div>
         </ul>
-        <div className="d-md-none d-flex menu-btn">
-          <i class="fa-solid fa-bars"></i>
+        <div className="d-md-none d-flex menu-btn c-p" onClick={toggleMenu}>
+          <i className="fa-solid fa-bars"></i>
         </div>
       </div>
+      <MobileMenu action={logoutUser} menutoggle={toggleMenu} />
       <div className='Logout c-p fw-semibold d-lg-block d-none' onClick={logoutUser}>
         <img src={Logout} /> <span>Logout</span>
       </div>
