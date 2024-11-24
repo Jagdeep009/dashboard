@@ -5,5 +5,6 @@ import Logo from './Logo'
 import User from './User'
 import MainHeading from './MainHeading'
 import Modal from './Modal'
+import Loader from './Loader'
 
-export {Login, AuthLayout, BtnPrimary, Logo, User,MainHeading, Modal}
+export {Login, AuthLayout, BtnPrimary, Logo, User,MainHeading, Modal,Loader}

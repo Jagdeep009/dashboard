@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux'
 import {logout} from '../store/authSlice'
 
 function SideMenu() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   function logoutUser() {
     dispatch(logout());
