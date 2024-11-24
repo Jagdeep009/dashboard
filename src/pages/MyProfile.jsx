@@ -99,7 +99,7 @@ function MyProfile() {
                 </div>
                 <div className="d-flex justify-content-between flex-wrap gap-4">
                   <a className='btn btn-outline-primary' href='https://github.com/Jagdeep009/dashboard/archive/refs/heads/main.zip'>Download Source Code</a>
-                  <a className='btn btn-primary' href='https://github.com/Jagdeep009/Jagdeep009.github.io/archive/refs/heads/main.zip'>Github Repository</a>
+                  <a className='btn btn-primary' href='https://github.com/Jagdeep009/dashboard'>Github Repository</a>
                 </div>
               </div>
             </div>
