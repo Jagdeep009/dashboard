@@ -128,9 +128,9 @@ function RoleManagement() {
               />
               <br />
               <div className="d-flex mb-3">
-                <span className='me-3'>Permissions:</span>
-                <div className='d-flex gap-2 flex-wrap'>
-                  <div>
+                <span className='me-3'>Permission:</span>
+                <div className='d-flex flex-wrap'>
+                  <div className='d-flex gap-1 col-6 mb-2'>
                     <input
                       type="checkbox"
                       id="Create"
@@ -141,7 +141,7 @@ function RoleManagement() {
                     />
                     <label htmlFor="Create">Create</label>
                   </div>
-                  <div>
+                  <div className='d-flex gap-1 col-6 mb-2 ps-2'>
                     <input
                       type="checkbox"
                       id="Read"
@@ -152,7 +152,7 @@ function RoleManagement() {
                     />
                     <label htmlFor="Read">Read</label>
                   </div>
-                  <div>
+                  <div className='d-flex gap-1 col-6 mb-2'>
                     <input
                       type="checkbox"
                       id="Update"
@@ -163,7 +163,7 @@ function RoleManagement() {
                     />
                     <label htmlFor="Update">Update</label>
                   </div>
-                  <div>
+                  <div className='d-flex gap-1 col-6 mb-2 ps-2'>
                     <input
                       type="checkbox"
                       id="Delete"
@@ -229,9 +229,9 @@ function RoleManagement() {
                 />
                 <br />
                 <div className="d-flex mb-3">
-                  <span className='me-3'>Permissions:</span>
-                  <div className='d-flex gap-2 flex-wrap'>
-                    <div>
+                  <span className='me-3'>Permission:</span>
+                  <div className='d-flex flex-wrap'>
+                    <div className='d-flex gap-1 col-6 mb-2'>
                       <input
                         type="checkbox"
                         id="Create"
@@ -242,7 +242,7 @@ function RoleManagement() {
                       />
                       <label htmlFor="Create">Create</label>
                     </div>
-                    <div>
+                    <div className='d-flex gap-1 col-6 mb-2 ps-2'>
                       <input
                         type="checkbox"
                         id="Read"
@@ -253,7 +253,7 @@ function RoleManagement() {
                       />
                       <label htmlFor="Read">Read</label>
                     </div>
-                    <div>
+                    <div className='d-flex gap-1 col-6 mb-2'>
                       <input
                         type="checkbox"
                         id="Update"
@@ -264,7 +264,7 @@ function RoleManagement() {
                       />
                       <label htmlFor="Update">Update</label>
                     </div>
-                    <div>
+                    <div className='d-flex gap-1 col-6 mb-2 ps-2'>
                       <input
                         type="checkbox"
                         id="Delete"
