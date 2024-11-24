@@ -40,3 +40,29 @@ select {
         width: 100%;
     }
 }
+@media (max-width: 767px) {
+    .main-wrapper {
+        width: 620px;
+        margin: auto;
+    }
+}
+@media (max-width: 640px) {
+    .main-wrapper {
+        width: 540px;
+    }
+}
+@media (max-width: 540px) {
+    .main-wrapper {
+        width: 460px;
+    }
+}
+@media (max-width: 470px) {
+    .main-wrapper {
+        width: 370px;
+    }
+}
+@media (max-width: 375px) {
+    .main-wrapper {
+        width: 320px;
+    }
+}
