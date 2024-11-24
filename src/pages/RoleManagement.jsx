@@ -129,7 +129,7 @@ function RoleManagement() {
               <br />
               <div className="d-flex mb-3">
                 <span className='me-3'>Permissions:</span>
-                <div className='d-flex gap-2'>
+                <div className='d-flex gap-2 flex-wrap'>
                   <input
                     type="checkbox"
                     id="Create"
@@ -225,7 +225,7 @@ function RoleManagement() {
                 <br />
                 <div className="d-flex mb-3">
                   <span className='me-3'>Permissions:</span>
-                  <div className='d-flex gap-2'>
+                  <div className='d-flex gap-2 flex-wrap'>
                     <input
                       type="checkbox"
                       id="Create"
