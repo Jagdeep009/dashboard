@@ -130,45 +130,50 @@ function RoleManagement() {
               <div className="d-flex mb-3">
                 <span className='me-3'>Permissions:</span>
                 <div className='d-flex gap-2 flex-wrap'>
-                  <input
-                    type="checkbox"
-                    id="Create"
-                    name="Create"
-                    value="Create"
-                    checked={editRole.actions.includes("Create")}
-                    onChange={handleCheckboxChange}
-                  />
-                  <label htmlFor="Create">Create</label><br />
-
-                  <input
-                    type="checkbox"
-                    id="Read"
-                    name="Read"
-                    value="Read"
-                    checked={editRole.actions.includes("Read")}
-                    onChange={handleCheckboxChange}
-                  />
-                  <label htmlFor="Read">Read</label><br />
-
-                  <input
-                    type="checkbox"
-                    id="Update"
-                    name="Update"
-                    value="Update"
-                    checked={editRole.actions.includes("Update")}
-                    onChange={handleCheckboxChange}
-                  />
-                  <label htmlFor="Update">Update</label><br />
-
-                  <input
-                    type="checkbox"
-                    id="Delete"
-                    name="Delete"
-                    value="Delete"
-                    checked={editRole.actions.includes("Delete")}
-                    onChange={handleCheckboxChange}
-                  />
-                  <label htmlFor="Delete">Delete</label><br />
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="Create"
+                      name="Create"
+                      value="Create"
+                      checked={editRole.actions.includes("Create")}
+                      onChange={handleCheckboxChange}
+                    />
+                    <label htmlFor="Create">Create</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="Read"
+                      name="Read"
+                      value="Read"
+                      checked={editRole.actions.includes("Read")}
+                      onChange={handleCheckboxChange}
+                    />
+                    <label htmlFor="Read">Read</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="Update"
+                      name="Update"
+                      value="Update"
+                      checked={editRole.actions.includes("Update")}
+                      onChange={handleCheckboxChange}
+                    />
+                    <label htmlFor="Update">Update</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="Delete"
+                      name="Delete"
+                      value="Delete"
+                      checked={editRole.actions.includes("Delete")}
+                      onChange={handleCheckboxChange}
+                    />
+                    <label htmlFor="Delete">Delete</label>
+                  </div>
                 </div>
               </div>
 
@@ -226,45 +231,50 @@ function RoleManagement() {
                 <div className="d-flex mb-3">
                   <span className='me-3'>Permissions:</span>
                   <div className='d-flex gap-2 flex-wrap'>
-                    <input
-                      type="checkbox"
-                      id="Create"
-                      name="Create"
-                      value="Create"
-                      checked={addRole.actions.includes("Create")}
-                      onChange={handleCheckboxChange2}
-                    />
-                    <label htmlFor="Create">Create</label><br />
-
-                    <input
-                      type="checkbox"
-                      id="Read"
-                      name="Read"
-                      value="Read"
-                      checked={addRole.actions.includes("Read")}
-                      onChange={handleCheckboxChange2}
-                    />
-                    <label htmlFor="Read">Read</label><br />
-
-                    <input
-                      type="checkbox"
-                      id="Update"
-                      name="Update"
-                      value="Update"
-                      checked={addRole.actions.includes("Update")}
-                      onChange={handleCheckboxChange2}
-                    />
-                    <label htmlFor="Update">Update</label><br />
-
-                    <input
-                      type="checkbox"
-                      id="Delete"
-                      name="Delete"
-                      value="Delete"
-                      checked={addRole.actions.includes("Delete")}
-                      onChange={handleCheckboxChange2}
-                    />
-                    <label htmlFor="Delete">Delete</label><br />
+                    <div>
+                      <input
+                        type="checkbox"
+                        id="Create"
+                        name="Create"
+                        value="Create"
+                        checked={addRole.actions.includes("Create")}
+                        onChange={handleCheckboxChange2}
+                      />
+                      <label htmlFor="Create">Create</label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        id="Read"
+                        name="Read"
+                        value="Read"
+                        checked={addRole.actions.includes("Read")}
+                        onChange={handleCheckboxChange2}
+                      />
+                      <label htmlFor="Read">Read</label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        id="Update"
+                        name="Update"
+                        value="Update"
+                        checked={addRole.actions.includes("Update")}
+                        onChange={handleCheckboxChange2}
+                      />
+                      <label htmlFor="Update">Update</label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        id="Delete"
+                        name="Delete"
+                        value="Delete"
+                        checked={addRole.actions.includes("Delete")}
+                        onChange={handleCheckboxChange2}
+                      />
+                      <label htmlFor="Delete">Delete</label>
+                    </div>
                   </div>
                 </div>
                 <div className="modal-footer">
