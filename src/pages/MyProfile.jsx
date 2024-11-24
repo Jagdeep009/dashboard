@@ -81,7 +81,7 @@ function MyProfile() {
                 </div>
               </form>
             </div>
-            <div className="col-lg-6 col-10 ps-lg-5">
+            <div className="col-lg-6 col-sm-10 col-12 ps-lg-5">
               <div className="shadow p-4 rounded">
                 <div className='mb-5'>
                   <h2>Support</h2>
